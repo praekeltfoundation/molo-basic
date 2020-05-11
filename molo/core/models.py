@@ -963,7 +963,8 @@ class SiteLanguage(models.Model):
 
 
 class SiteLanguageRelation(Orderable, SiteLanguage):
-    language_setting = ParentalKey(Languages, related_name='languages')
+    language_setting = ParentalKey(
+        Languages, related_name='languages', on_delete=models.CASCADE)
 
 
 class SectionIndexPage(MoloPage, PreventDeleteMixin):
@@ -1277,7 +1278,8 @@ SectionPage.settings_panels = [
 
 class ArticlePageMetaDataTag(TaggedItemBase):
     content_object = ParentalKey(
-        'core.ArticlePage', related_name='metadata_tagged_items')
+        'core.ArticlePage', related_name='metadata_tagged_items',
+        on_delete=models.CASCADE)
 
 
 class ArticlePage(ImportableMixin,
@@ -1533,7 +1535,9 @@ class ArticlePageLanguageProxy(ArticlePage):
 
 
 class ArticlePageRecommendedSections(Orderable):
-    page = ParentalKey(ArticlePage, related_name='recommended_articles')
+    page = ParentalKey(
+        ArticlePage, related_name='recommended_articles',
+        on_delete=models.CASCADE)
     recommended_article = models.ForeignKey(
         'wagtailcore.Page',
         null=True,
@@ -1547,7 +1551,9 @@ class ArticlePageRecommendedSections(Orderable):
 
 
 class ArticlePageRelatedSections(Orderable):
-    page = ParentalKey(ArticlePage, related_name='related_sections')
+    page = ParentalKey(
+        ArticlePage, related_name='related_sections',
+        on_delete=models.CASCADE)
     section = models.ForeignKey(
         'wagtailcore.Page',
         null=True,
