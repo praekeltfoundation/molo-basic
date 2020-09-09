@@ -7,13 +7,14 @@ from django.shortcuts import get_object_or_404
 from django.db.models.query import QuerySet
 
 from wagtail.core.models import Site
+from wagtail.core.models import Page
 
 from molo.core.tests.base import MoloTestCaseMixin
 from molo.core.models import SectionPage, SiteSettings, \
     ArticlePage, Main, SiteLanguageRelation, Languages
 from molo.core.tasks import promote_articles
 from molo.core.wagtail_hooks import show_main_language_only
-from wagtail.core.models import Page
+
 
 
 @pytest.mark.django_db

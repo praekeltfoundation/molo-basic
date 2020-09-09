@@ -1,32 +1,19 @@
-from os import environ, path, walk
+from os import environ
 import pkg_resources
 import requests
-import zipfile
-from io import BytesIO
 
+from django.urls import reverse
 from django.conf import settings
 from django.contrib import messages
-from django.contrib.auth.decorators import user_passes_test
-from django.core.exceptions import PermissionDenied
-from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-from django.urls import reverse
-from django.http import (
-    JsonResponse,
-    HttpResponse,
-    HttpResponseNotAllowed,
-    Http404,
-)
-from django.shortcuts import redirect, get_object_or_404, render
 from django.utils.http import is_safe_url
-from django.utils.translation import (
-    LANGUAGE_SESSION_KEY,
-    get_language_from_request
-)
-from django.views.generic import ListView
-from django.views.generic.edit import FormView
-from django.views.generic.base import TemplateView
+from django.http import JsonResponse, Http404
 from django.utils.translation import ugettext as _
+from django.core.exceptions import PermissionDenied
 from django.contrib.sitemaps import views as sitemap_views
+from django.shortcuts import redirect, get_object_or_404, render
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.utils.translation import (
+    LANGUAGE_SESSION_KEY, get_language_from_request)
 
 from wagtail.search.models import Query
 from wagtail.core.models import Page, UserPagePermissionsProxy
@@ -35,11 +22,10 @@ from wagtail.contrib.sitemaps.sitemap_generator import Sitemap
 
 from molo.core.utils import generate_slug, get_locale_code
 from molo.core.models import (
-    ArticlePage, Languages, SiteSettings,
+    ArticlePage, Languages,
     SectionPage,
     TranslatablePageMixinNotRoutable)
 
-from molo.core.templatetags.core_tags import get_pages
 from molo.core.known_plugins import known_plugins
 from molo.core.tasks import copy_to_all_task
 

@@ -1,28 +1,23 @@
-from django.conf.urls import url
-
-from molo.core.admin import (
-    AdminViewGroup
-)
-from molo.core.models import Languages, ArticlePage
-from molo.core.utils import create_new_article_relations
-from django.db.models.query import QuerySet
-
 from django.urls import reverse
-from django.utils.translation import ugettext_lazy as _
+from django.conf.urls import url
+from django.utils.html import format_html
+from django.db.models.query import QuerySet
 from django.contrib.auth.models import User
 from django.templatetags.static import static
-from django.utils.html import format_html
+from molo.core.models import Languages, ArticlePage
+from django.utils.translation import ugettext_lazy as _
 
 from wagtail.core import hooks
 from wagtail.admin.menu import MenuItem
-from wagtail.admin.site_summary import SummaryItem
 from wagtail.admin.widgets import Button
+from wagtail.admin.site_summary import SummaryItem
 from wagtail.contrib.modeladmin.options import (
-    modeladmin_register, ModelAdminGroup)
+    modeladmin_register)
 
 from molo.core.api import urls as molo_api_urls
 from molo.core import views
 from molo.core.utils import copy_translation_pages
+from molo.core.admin import AdminViewGroup
 
 
 @hooks.register('register_admin_urls')

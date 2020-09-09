@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import pytest
 import datetime
+from pytz import UTC
 
 from django.urls import reverse
 from django.test import TestCase, override_settings
@@ -10,8 +11,6 @@ from molo.core.tests.base import MoloTestCaseMixin
 from molo.core.models import (
     SiteLanguageRelation, Languages, ArticlePage,
     SectionPage)
-
-from pytz import UTC
 
 
 @pytest.mark.django_db

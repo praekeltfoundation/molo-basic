@@ -1,8 +1,7 @@
 from django.contrib.auth.models import Group
 from django_cas_ng.backends import CASBackend
 from django.contrib.auth import get_user_model
-from django.contrib.auth.backends import ModelBackend
-from django.core.exceptions import PermissionDenied
+
 
 UserModel = get_user_model()
 

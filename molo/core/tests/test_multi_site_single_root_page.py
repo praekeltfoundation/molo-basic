@@ -1,10 +1,10 @@
 from django.test import TestCase, Client
 
+from wagtail.core.models import Site
+
 from molo.core.models import Main, SiteLanguageRelation, Languages
 from molo.core.tests.base import MoloTestCaseMixin
 from molo.core.utils import generate_slug
-
-from wagtail.core.models import Site
 
 
 class TestSites(TestCase, MoloTestCaseMixin):

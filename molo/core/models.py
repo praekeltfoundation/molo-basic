@@ -31,12 +31,11 @@ from wagtail.admin.edit_handlers import (
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.core import blocks
 from wagtail.core.models import PageManager
-from wagtail.images.blocks import ImageChooserBlock
 from wagtail.images.models import Image
 from wagtail.contrib.routable_page.models import route, RoutablePageMixin
 from wagtail.core.signals import page_unpublished
 
-from molo.core.blocks import MarkDownBlock, SocialMediaLinkBlock
+from molo.core.blocks import SocialMediaLinkBlock
 from molo.core.api.constants import ERROR
 from molo.core.forms import ArticlePageForm
 from molo.core.utils import get_locale_code, generate_slug
@@ -51,7 +50,6 @@ from molo.core.utils import (
     get_image_hash
 )
 
-from django.db.models.signals import pre_delete
 from django_enumfield import enum
 
 
