@@ -16,7 +16,6 @@ from molo.core.tasks import promote_articles
 from molo.core.wagtail_hooks import show_main_language_only
 
 
-
 @pytest.mark.django_db
 class TestTranslations(TestCase, MoloTestCaseMixin):
     def setUp(self):

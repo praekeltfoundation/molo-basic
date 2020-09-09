@@ -210,7 +210,6 @@ def section_index(
         request, template, {'section': section, 'locale_code': locale_code})
 
 
-
 @page_template('search/search_results_for_paging.html')
 def search_index(
         request,
