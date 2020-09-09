@@ -1,0 +1,43 @@
+sudo: false
+language: python
+python:
+  - '3.6'
+
+env:
+  - TEST=molo_lint
+  - TEST=testapp_lint
+  - TEST=build
+
+jobs:
+  include:
+    # Include a separate job for the node tests
+    - language: node_js
+      node_js: '6' # LTS version
+      env: []
+      cache:
+        directories: [client/node_modules]
+      before_install:
+        - cd client
+      install:
+        - travis_retry npm install
+      script:
+        - npm run ci
+
+      # Clear unused build steps
+      services: []
+      after_success: []
+
+services:
+  - elasticsearch
+  - redis-server
+cache: pip
+
+before_install:
+  - pip install --upgrade pip
+install:
+  - pip install -r requirements.txt
+  - pip install -r requirements-dev.txt
+  - pip install coveralls
+script: ./travis.sh
+after_success:
+  - coveralls
