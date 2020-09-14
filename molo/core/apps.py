@@ -17,6 +17,8 @@ class MoloAppConfig(AppConfig):
 
         try:
             site = Site.objects.first()
+            if not site:
+                raise OperationalError("No site object")
             timezone = CmsSettings.for_site(site).timezone
 
             if timezone is None:
