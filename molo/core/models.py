@@ -18,8 +18,8 @@ from django.template.response import TemplateResponse
 
 from taggit.models import TaggedItemBase
 from modelcluster.fields import ParentalKey
-from modelcluster.tags import ClusterTaggableManager
 from modelcluster.models import ClusterableModel
+from modelcluster.contrib.taggit import ClusterTaggableManager
 
 from wagtail.contrib.settings.models import BaseSetting, register_setting
 from wagtail.core.models import Page, Orderable, Site
@@ -30,10 +30,13 @@ from wagtail.admin.edit_handlers import (
     MultiFieldPanel, InlinePanel)
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.core import blocks
-from wagtail.core.models import PageManager
 from wagtail.images.models import Image
-from wagtail.contrib.routable_page.models import route, RoutablePageMixin
+from wagtail.core.models import PageManager
 from wagtail.core.signals import page_unpublished
+from wagtail.contrib.forms.models import \
+    AbstractForm, AbstractFormField, AbstractFormSubmission
+from wagtail.contrib.routable_page.models import route, RoutablePageMixin
+
 
 from molo.core.blocks import SocialMediaLinkBlock
 from molo.core.api.constants import ERROR
@@ -1032,7 +1035,11 @@ class SectionPage(ImportableMixin,
         related_name='+'
     )
     parent_page_types = ['core.SectionIndexPage', 'core.SectionPage']
-    subpage_types = ['core.ArticlePage', 'core.SectionPage']
+    subpage_types = [
+        'core.ArticlePage',
+        'core.SectionPage',
+        'core.FormPage'
+    ]
     search_fields = Page.search_fields + [
         index.SearchField('description'),
     ]
@@ -1341,7 +1348,7 @@ class ArticlePage(ImportableMixin,
             'A comma-separated list of tags. '
             'This is not visible to the user.'))
 
-    subpage_types = []
+    subpage_types = ['core.FormPage']
     search_fields = Page.search_fields + [
         index.SearchField('subtitle'),
         index.SearchField('body'),
@@ -1594,3 +1601,62 @@ FooterPage.promote_panels = [
     MultiFieldPanel(
         Page.promote_panels,
         "Common page configuration", "collapsible collapsed")]
+
+
+class FormIndexPage(MoloPage, PreventDeleteMixin):
+    parent_page_types = ['core.Main']
+    subpage_types = ['core.FormPage']
+
+    def copy(self, *args, **kwargs):
+        site = kwargs['to'].get_site()
+        main = site.root_page
+        FormIndexPage.objects.child_of(main).delete()
+        super(FormIndexPage, self).copy(*args, **kwargs)
+
+    def get_site(self):
+        try:
+            return self.get_ancestors().filter(
+                depth=2).first().sites_rooted_here.get(
+                site_name__icontains='main')
+        except Exception:
+            return self.get_ancestors().filter(
+                depth=2).first().sites_rooted_here.all().first() or None
+
+
+class FormPage(AbstractForm):
+    page = models.ForeignKey(
+        Page, null=True, blank=True,
+        on_delete=models.SET_NULL, related_name='forms'
+    )
+    thank_you_text = models.TextField(blank=True, null=True)
+    content_panels = AbstractForm.content_panels + [
+        InlinePanel('form_fields', label=_('Fields')),
+        FieldPanel('thank_you_text'),
+    ]
+    subpage_types = []
+    parent_page_types = [
+        'ArticlePage',
+        'SectionPage',
+        'FormIndexPage'
+    ]
+
+
+class FormField(AbstractFormField):
+    page = ParentalKey(
+        FormPage, on_delete=models.CASCADE, related_name='form_fields')
+
+
+class FormSubmission(AbstractFormSubmission):
+    """Data for a Form submission."""
+    page = models.ForeignKey(
+        Page, blank=True, null=True,
+        on_delete=models.CASCADE, related_name='submissions')
+
+
+@receiver(index_pages_after_copy, sender=Main)
+def create_form_index_pages(sender, instance, **kwargs):
+    kw = dict(title='Forms', slug='form-pages')
+    if not instance.get_children().filter(**kw).exists():
+        form_index = FormIndexPage(**kw)
+        instance.add_child(instance=form_index)
+        form_index.save_revision().publish()
