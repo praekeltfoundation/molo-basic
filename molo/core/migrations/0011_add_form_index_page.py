@@ -14,7 +14,7 @@ def create_form_index(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('core', '0010_formindexpage_formsubmission'),
+        ('core', '0008_formfield_formindexpage_formpage_formsubmission'),
     ]
 
     operations = [
