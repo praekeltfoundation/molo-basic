@@ -215,4 +215,3 @@ class FormSubmissionAdmin(WagtailModelAdmin):
 
 modeladmin_register(FormPageAdmin)
 modeladmin_register(FormSubmissionAdmin)
-
