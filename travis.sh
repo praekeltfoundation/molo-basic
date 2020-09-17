@@ -19,7 +19,7 @@ elif [ "$TEST" == "testapp_lint" ]; then
 elif [ "$TEST" == "build" ]; then
     setup_testapp
     pip install -e testapp
-    py.test --cov
+    py.test --cov -k TestFormAdmin
 else
     echo "The environment variable TEST was not set correctly"
     exit 1
