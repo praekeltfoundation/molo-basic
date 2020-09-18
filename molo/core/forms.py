@@ -1,5 +1,4 @@
 from django.utils import timezone
-from django import forms
 
 from wagtail.admin.forms import WagtailAdminPageForm
 from django.utils.translation import ugettext_lazy as _
@@ -18,29 +17,32 @@ class ArticlePageForm(WagtailAdminPageForm):
             if not promote_date:
                 self.add_error(
                     "promote_date",
-                    "Please specify the date and time that you would like "
-                    "this article to appear as the Hero Article."
+                    _(
+                        "Please specify the date and time that you would like "
+                        "this article to appear as the Hero Article.")
                 )
 
             if not demote_date:
                 self.add_error(
                     "demote_date",
-                    "Please specify the date and time that you would like "
-                    "this article to be demoted as the Hero Article."
+                    _(
+                        "Please specify the date and time that you would like "
+                        "this article to be demoted as the Hero Article.")
                 )
 
             if promote_date and demote_date:
                 if promote_date < timezone.now():
                     self.add_error(
                         "promote_date",
-                        "Please select the present date, or a future date."
+                        _("Please select the present date, or a future date.")
                     )
 
                 if demote_date < timezone.now() or demote_date < promote_date:
                     self.add_error(
                         "demote_date",
-                        "The article cannot be demoted before it has been "
-                        "promoted."
+                        _(
+                            "The article cannot be demoted before it has been "
+                            "promoted.")
                     )
 
         return cleaned_data

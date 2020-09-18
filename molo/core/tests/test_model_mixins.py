@@ -70,7 +70,7 @@ class TestImportableMixin(MoloTestCaseMixin, TestCase):
         self.assertTrue(page.social_media_image)
         self.assertEqual(page.social_media_image.title,
                          content["social_media_image"]["title"])
-    
+
         self.assertTrue(
             content["id"] in
             record_keeper.foreign_to_many_foreign_map["recommended_articles"])

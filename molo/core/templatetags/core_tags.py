@@ -12,9 +12,7 @@ from prometheus_client import Summary
 from molo.core.decorators import prometheus_query_count
 from molo.core.models import (
     Page, ArticlePage, SectionPage, SiteSettings, Languages,
-    SectionIndexPage,
-    BannerPage, get_translation_for,
-    ArticleOrderingChoices
+    SectionIndexPage, BannerPage, ArticleOrderingChoices
 )
 
 

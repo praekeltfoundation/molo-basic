@@ -419,7 +419,6 @@ def import_site(root_url, site_pk, user_pk):
             foreign_id=foreign_footer_index_page_id,
             existing_node=footer_index_page)
 
-
         logger.log(ACTION, "Creating Recommended Articles")
         content_importer.create_recommended_articles()
 

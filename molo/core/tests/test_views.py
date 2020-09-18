@@ -3,18 +3,20 @@ import re
 import json
 import pytest
 import responses
-from os import environ, makedirs, path
+from os import environ
+from mock import patch, Mock
+from bs4 import BeautifulSoup
+from six.moves.urllib.parse import parse_qs
 
 from django.core import mail
-from django.conf import settings
 from django.utils import timezone
 from django.urls import reverse
-from django.core.files.base import ContentFile
 from django.contrib.contenttypes.models import ContentType
 from django.test import TestCase, override_settings, Client
 from django.contrib.auth.models import User, Group, Permission
 
-from io import BytesIO
+from wagtail.core.models import Site, Page
+from wagtail.images.tests.utils import Image, get_test_image_file
 
 from molo.core.tests.base import MoloTestCaseMixin
 from molo.core.models import (
@@ -28,17 +30,6 @@ from molo.core.tasks import promote_articles
 from molo.core.templatetags.core_tags import \
     load_descendant_articles_for_section
 from molo.core.wagtail_hooks import copy_translation_pages
-
-from mock import patch, Mock
-from shutil import rmtree
-from six import b
-from six.moves.urllib.parse import parse_qs
-from bs4 import BeautifulSoup
-
-from wagtail.core.models import Site, Page
-from wagtail.images.tests.utils import Image, get_test_image_file
-
-from zipfile import ZipFile
 
 
 @pytest.mark.django_db
@@ -1801,7 +1792,8 @@ class TestArticlePageNextArticle(TestCase, MoloTestCaseMixin):
         response = self.client.get('/sections-main-1/section-b/article-2/')
         self.assertEqual(response.status_code, 200)
         self.assertContains(response.content, self.article_1.title)
-        self.assertContains(response.content, 'Next up in ' + self.section_b.title)
+        self.assertContains(
+            response.content, 'Next up in ' + self.section_b.title)
 
     def test_next_article_not_displayed_for_single_article(self):
         self.section_b = self.mk_section(self.section_index, title='Section B')

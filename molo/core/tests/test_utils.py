@@ -1,4 +1,5 @@
 from django.test import TestCase
+
 from molo.core import utils
 from molo.core.tests.base import MoloTestCaseMixin
 from molo.core.models import SiteLanguageRelation, Languages, Main

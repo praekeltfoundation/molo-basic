@@ -1,11 +1,6 @@
-import os
-import shutil
-import zipfile
 import re
-import tempfile
 import hashlib
 import json
-import distutils.dir_util
 
 from django.conf import settings
 from django.core.exceptions import ObjectDoesNotExist
