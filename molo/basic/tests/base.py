@@ -6,9 +6,10 @@ from django.contrib.contenttypes.models import ContentType
 
 from wagtail.core.models import Page, Collection
 
-from molo.basic.models import (Main, SectionPage, ArticlePage, PageTranslation,
-                              SectionIndexPage, FooterIndexPage,
-                              BannerIndexPage, BannerPage)
+from molo.basic.models import (
+    Main, SectionPage, ArticlePage, PageTranslation,
+    SectionIndexPage, FooterIndexPage,
+    BannerIndexPage, BannerPage)
 from molo.basic.utils import generate_slug
 
 

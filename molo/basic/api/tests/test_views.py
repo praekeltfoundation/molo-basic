@@ -58,7 +58,9 @@ class MainImportViewTestCase(APIMoloTestCase):
             response, "form", "url", [u"Please enter a valid URL."]
         )
 
-    @patch("molo.basic.api.forms.requests.get", side_effect=mocked_requests_get)
+    @patch(
+        "molo.basic.api.forms.requests.get",
+        side_effect=mocked_requests_get)
     def test_redirects_to_parent_chooser(self, mock_get):
         form_data = {
             "url": "http://localhost:8000/",
@@ -93,7 +95,9 @@ class ArticleImportViewTestCase(APIMoloTestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(url, reverse("molo_api:main-import"))
 
-    @patch("molo.basic.api.forms.requests.get", side_effect=mocked_requests_get)
+    @patch(
+        "molo.basic.api.forms.requests.get",
+        side_effect=mocked_requests_get)
     def test_redirect_to_article_chooser_if_session_not_set(self, mock_get):
         form_data = {
             "url": "http://localhost:8000/",
@@ -189,7 +193,9 @@ class SectionParentChooserTestCase(APIMoloTestCase):
             reverse("molo_api:main-import")
         )
 
-    @patch("molo.basic.api.forms.requests.get", side_effect=mocked_requests_get)
+    @patch(
+        "molo.basic.api.forms.requests.get",
+        side_effect=mocked_requests_get)
     def test_redirect_to_section_chooser_if_session_not_set(self, mock_get):
         form_data = {
             "url": "http://localhost:8000/",

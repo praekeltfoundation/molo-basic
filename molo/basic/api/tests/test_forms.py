@@ -72,7 +72,9 @@ class MainImportFormTestCase(MoloTestCaseMixin, TestCase):
     def setUp(self):
         self.mk_main()
 
-    @patch("molo.basic.api.forms.requests.get", side_effect=mocked_requests_get)
+    @patch(
+        "molo.basic.api.forms.requests.get",
+        side_effect=mocked_requests_get)
     def test_valid_url_is_given(self, mock_get):
         form_data = {
             "url": "http://localhost:8000/api/v2/pages",
