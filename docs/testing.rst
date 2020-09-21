@@ -1,7 +1,7 @@
 Writing Test Cases
 ~~~~~~~~~~~~~~~~~~
 
-Use Molo test mixin `molo.core.tests.base.MoloTestCaseMixin`
+Use Molo test mixin `molo.basic.tests.base.MoloTestCaseMixin`
 
 The Molo test mixin contains helper methods to generate test content necessary for the main sight.
 

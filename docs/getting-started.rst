@@ -102,7 +102,7 @@ templates directory::
    $ pip install -e testapp
    ...
 
-You'll see the default templates that ``molo.core`` ships with available in
+You'll see the default templates that ``molo.basic`` ships with available in
 the ``templates`` directory::
 
    $ ls testapp/testapp/templates

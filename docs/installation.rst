@@ -10,7 +10,7 @@ Molo can be then installed using::
 
     $ virtualenv ve
     $ source ve/bin/activate
-    (ve)$ pip install molo.core
+    (ve)$ pip install molo.basic
 
 .. _python: https://www.python.org/
 .. _pip: https://pip.pypa.io/en/latest/index.html

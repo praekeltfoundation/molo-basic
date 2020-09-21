@@ -34,7 +34,7 @@ Core Features
 
             WAGTAILSEARCH_BACKENDS = {
                 'default': {
-                    'BACKEND': 'molo.core.wagtailsearch.backends.elasticsearch',
+                    'BACKEND': 'molo.basic.wagtailsearch.backends.elasticsearch',
                     'INDEX': 'base',
                 },
             }
@@ -43,7 +43,7 @@ Core Features
 
             WAGTAILSEARCH_BACKENDS = {
                 'default': {
-                    'BACKEND': 'molo.core.wagtailsearch.backends.elasticsearch2',
+                    'BACKEND': 'molo.basic.wagtailsearch.backends.elasticsearch2',
                     'INDEX': 'base',
                 },
             }

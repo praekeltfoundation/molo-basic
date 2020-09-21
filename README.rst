@@ -13,8 +13,8 @@ Molo
     :target: https://molo.readthedocs.org
     :alt: Molo Documentation
 
-.. image:: https://badge.fury.io/py/molo.core.svg
-    :target: http://badge.fury.io/py/molo.core
+.. image:: https://badge.fury.io/py/molo.basic.svg
+    :target: http://badge.fury.io/py/molo.basic
     :alt: Pypi Package
 
 Installation
@@ -29,7 +29,7 @@ Molo can be then installed using::
 
     $ virtualenv ve
     $ source ve/bin/activate
-    (ve)$ pip install molo.core
+    (ve)$ pip install molo.basic
 
 .. _python: https://www.python.org/
 .. _pip: https://pip.pypa.io/en/latest/index.html
@@ -134,7 +134,7 @@ templates directory::
    $ pip install -e testapp
    ...
 
-You'll see the default templates that ``molo.core`` ships with available in
+You'll see the default templates that ``molo.basic`` ships with available in
 the ``templates`` directory::
 
    $ ls testapp/testapp/templates

@@ -10,6 +10,6 @@
     :target: https://molo.readthedocs.org
     :alt: Molo Documentation
 
-.. image:: https://badge.fury.io/py/molo.core.svg
-    :target: http://badge.fury.io/py/molo.core
+.. image:: https://badge.fury.io/py/molo.basic.svg
+    :target: http://badge.fury.io/py/molo.basic
     :alt: Pypi Package

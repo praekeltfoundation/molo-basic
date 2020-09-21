@@ -82,5 +82,5 @@ setup(name='molo.basic',
       namespace_packages=['molo'],
       install_requires=install_requires,
       entry_points={
-          'console_scripts': ['molo = molo.core.scripts.cli:main'],
+          'console_scripts': ['molo = molo.basic.scripts.cli:main'],
       })

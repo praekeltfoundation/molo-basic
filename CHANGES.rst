@@ -184,7 +184,7 @@ CHANGES
 
 8.9.1
 ~~~~~
-- Refactor deprecating Django 2.0 code on molo.core and molo.profiles
+- Refactor deprecating Django 2.0 code on molo.basic and molo.profiles
 
 8.9.0
 ~~~~~
@@ -817,7 +817,7 @@ Note:
 - Don't pin the required setuptools version
 - Update LICENSE file
 - Move requirements to setup.py
-- Remove django-modelcluster from scaffolded app dependencies, molo.core depends on newer version already
+- Remove django-modelcluster from scaffolded app dependencies, molo.basic depends on newer version already
 - Allow minor updates to wagtail package (e.g. 1.9.1, not just 1.9)
 - Update .gitignore to newer standard (more Python 3 friendly)
 - Fix and cleanup MANIFEST.in
@@ -1390,11 +1390,11 @@ Note: Search highlighting is only supported by the Elasticsearch backend.
 
 3.0.2
 ~~~~~~
-- Changed molo.core version number in get_pypi_version test
+- Changed molo.basic version number in get_pypi_version test
 
 3.0.1
 ~~~~~~
-- Changed molo.core version number in versions_comparison test
+- Changed molo.basic version number in versions_comparison test
 
 3.0.0
 ~~~~~~

@@ -7,7 +7,7 @@ Creating A Translatable Page Model
 ----------------------------------
 In your models.py import the TranslatablePageMixin::
 
-    from molo.core.models import TranslatablePageMixin
+    from molo.basic.models import TranslatablePageMixin
 
 Add it to the definition of your model::
 
