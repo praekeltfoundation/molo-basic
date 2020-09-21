@@ -22,7 +22,7 @@ class Migration(migrations.Migration):
             options={
                 'abstract': False,
             },
-            bases=('core.molopage', molo.basic.models.PreventDeleteMixin),
+            bases=('basic.molopage', molo.basic.models.PreventDeleteMixin),
         ),
         migrations.CreateModel(
             name='FormSubmission',
@@ -60,7 +60,7 @@ class Migration(migrations.Migration):
                 ('choices', models.TextField(blank=True, help_text='Comma separated list of choices. Only applicable in checkboxes, radio and dropdown.', verbose_name='choices')),
                 ('default_value', models.CharField(blank=True, help_text='Default value. Comma separated values supported for checkboxes.', max_length=255, verbose_name='default value')),
                 ('help_text', models.CharField(blank=True, max_length=255, verbose_name='help text')),
-                ('page', modelcluster.fields.ParentalKey(on_delete=django.db.models.deletion.CASCADE, related_name='form_fields', to='core.FormPage')),
+                ('page', modelcluster.fields.ParentalKey(on_delete=django.db.models.deletion.CASCADE, related_name='form_fields', to='basic.FormPage')),
             ],
             options={
                 'ordering': ['sort_order'],

@@ -51,12 +51,12 @@ class MainImportView(FormView):
 
         # set the needed variables to the session for later retrieval
         self.request.session["url"] = form.cleaned_data["url"]
-        if content_type == "core.ArticlePage":
+        if content_type == "basic.ArticlePage":
             self.request.session["article_content_type"] = content_type
             return HttpResponseRedirect(
                 reverse("molo_api:article-parent-chooser")
             )
-        elif content_type == "core.SectionPage":
+        elif content_type == "basic.SectionPage":
             self.request.session["section_content_type"] = content_type
             return HttpResponseRedirect(
                 reverse("molo_api:section-parent-chooser")

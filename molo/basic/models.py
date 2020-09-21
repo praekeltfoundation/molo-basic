@@ -534,7 +534,7 @@ class LanguageRelation(models.Model):
         related_name='languages', on_delete=models.CASCADE
     )
     language = models.ForeignKey(
-        'core.SiteLanguage',
+        'basic.SiteLanguage',
         related_name='+', on_delete=models.CASCADE
     )
 
@@ -742,7 +742,7 @@ class TranslatablePageMixin(
 
 class BannerIndexPage(MoloPage, PreventDeleteMixin, ImportableMixin):
     parent_page_types = []
-    subpage_types = ['BannerPage']
+    subpage_types = ['basic.BannerPage']
 
     def copy(self, *args, **kwargs):
         site = kwargs['to'].specific.get_site()
@@ -761,9 +761,9 @@ class BannerIndexPage(MoloPage, PreventDeleteMixin, ImportableMixin):
 
 
 class BannerPage(ImportableMixin, TranslatablePageMixin, MoloPage):
-    parent_page_types = ['core.BannerIndexPage']
+    parent_page_types = ['basic.BannerIndexPage']
     subpage_types = []
-    language = models.ForeignKey('core.SiteLanguage',
+    language = models.ForeignKey('basic.SiteLanguage',
                                  blank=True,
                                  null=True,
                                  on_delete=models.SET_NULL,
@@ -1019,7 +1019,7 @@ SectionIndexPage.content_panels = [
 
 class SectionPage(ImportableMixin,
                   TranslatablePageMixin, MoloPage):
-    language = models.ForeignKey('core.SiteLanguage',
+    language = models.ForeignKey('basic.SiteLanguage',
                                  blank=True,
                                  null=True,
                                  on_delete=models.SET_NULL,
@@ -1034,11 +1034,11 @@ class SectionPage(ImportableMixin,
         on_delete=models.SET_NULL,
         related_name='+'
     )
-    parent_page_types = ['core.SectionIndexPage', 'core.SectionPage']
+    parent_page_types = ['basic.SectionIndexPage', 'basic.SectionPage']
     subpage_types = [
-        'core.ArticlePage',
-        'core.SectionPage',
-        'core.FormPage'
+        'basic.ArticlePage',
+        'basic.SectionPage',
+        'basic.FormPage'
     ]
     search_fields = Page.search_fields + [
         index.SearchField('description'),
@@ -1283,19 +1283,19 @@ SectionPage.settings_panels = [
 
 class ArticlePageMetaDataTag(TaggedItemBase):
     content_object = ParentalKey(
-        'core.ArticlePage', related_name='metadata_tagged_items',
+        'basic.ArticlePage', related_name='metadata_tagged_items',
         on_delete=models.CASCADE)
 
 
 class ArticlePage(ImportableMixin,
                   TranslatablePageMixin, PageEffectiveImageMixin, MoloPage):
-    language = models.ForeignKey('core.SiteLanguage',
+    language = models.ForeignKey('basic.SiteLanguage',
                                  blank=True,
                                  null=True,
                                  on_delete=models.SET_NULL,
                                  )
     translated_pages = models.ManyToManyField("self", blank=True)
-    parent_page_types = ['core.SectionPage']
+    parent_page_types = ['basic.SectionPage']
 
     subtitle = models.TextField(null=True, blank=True)
     uuid = models.CharField(max_length=32, blank=True, null=True)
@@ -1348,7 +1348,7 @@ class ArticlePage(ImportableMixin,
             'A comma-separated list of tags. '
             'This is not visible to the user.'))
 
-    subpage_types = ['core.FormPage']
+    subpage_types = ['basic.FormPage']
     search_fields = Page.search_fields + [
         index.SearchField('subtitle'),
         index.SearchField('body'),
@@ -1551,7 +1551,7 @@ class ArticlePageRecommendedSections(Orderable):
         related_name='+',
         help_text=_('Recommended articles for this article')
     )
-    panels = [PageChooserPanel('recommended_article', 'core.ArticlePage')]
+    panels = [PageChooserPanel('recommended_article', 'basic.ArticlePage')]
     api_fields = ['recommended_article']
 
 
@@ -1567,7 +1567,7 @@ class ArticlePageRelatedSections(Orderable):
         related_name='+',
         help_text=_('Section that this page also belongs too')
     )
-    panels = [PageChooserPanel('section', 'core.SectionPage')]
+    panels = [PageChooserPanel('section', 'basic.SectionPage')]
     api_fields = ['section']
 
 
@@ -1604,8 +1604,8 @@ FooterPage.promote_panels = [
 
 
 class FormIndexPage(MoloPage, PreventDeleteMixin):
-    parent_page_types = ['core.Main']
-    subpage_types = ['core.FormPage']
+    parent_page_types = ['basic.Main']
+    subpage_types = ['basic.FormPage']
 
     def copy(self, *args, **kwargs):
         site = kwargs['to'].get_site()

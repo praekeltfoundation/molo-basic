@@ -125,7 +125,7 @@ class ArticlePageImporter(PageImporter):
         super(ArticlePageImporter, self).__init__(
             base_url=base_url, content=content, content_type=content_type
         )
-        self._content_type = "core.ArticlePage"
+        self._content_type = "basic.ArticlePage"
         self._fields = ArticlePage.get_api_fields()
 
     def save(self, indexes, parent_id):
@@ -166,11 +166,11 @@ class SectionPageImporter(PageImporter):
         super(SectionPageImporter, self).__init__(
             base_url=base_url, content=content, content_type=content_type
         )
-        self._content_type = "core.SectionPage"
+        self._content_type = "basic.SectionPage"
         self._fields = SectionPage.get_api_fields()
 
     def _save_item(self, item, parent):
-        if item["meta"]["type"] == "core.SectionPage":
+        if item["meta"]["type"] == "basic.SectionPage":
             flat_fields, nested_fields = separate_fields(item)
             child_section = SectionPage(**flat_fields)
 
@@ -183,7 +183,7 @@ class SectionPageImporter(PageImporter):
             parent.save_revision().publish()
             return child_section
 
-        elif item["meta"]["type"] == "core.ArticlePage":
+        elif item["meta"]["type"] == "basic.ArticlePage":
             flat_fields, nested_fields = separate_fields(item)
             child_article = ArticlePage(**flat_fields)
             if ("tags" in nested_fields) and nested_fields["tags"]:

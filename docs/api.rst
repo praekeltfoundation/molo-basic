@@ -29,10 +29,10 @@ Custom fields::
 
     title, subtitle, banner, banner_link_page, external_link
 
-``core.ArticlePage``
+``basic.ArticlePage``
 ********************
 A special case is added to the ``MoloPageEndpoint``: If filtering with
-``?type=core.ArticlePage`` then the pages can also be filtered by the ``tag`` attribute
+``?type=basic.ArticlePage`` then the pages can also be filtered by the ``tag`` attribute
 of the ``nav_tags`` field using ``nav_tags__tag=<tag_id>``
 Custom fields::
 
@@ -47,7 +47,7 @@ Custom fields::
     social_media_description, social_media_title, reaction_questions, nav_tags,
     recommended_articles, related_sections, go_live_at, expire_at, expired, live
 
-``core.SectionPage``
+``basic.SectionPage``
 ********************
 Custom fields::
 
@@ -86,7 +86,7 @@ List endpoint:
 .. code-block:: json
     :linenos:
 
-    GET /api/v2/pages/?type=core.ArticlePage&live=true
+    GET /api/v2/pages/?type=basic.ArticlePage&live=true
 
     HTTP 200 OK
     Content-Type: application/json
@@ -98,7 +98,7 @@ List endpoint:
             {
                 "id": 66,
                 "meta": {
-                    "type": "core.ArticlePage",
+                    "type": "basic.ArticlePage",
                     "detail_url": "http://api.example.com/api/v2/pages/66/",
                     "html_url": "http://api.example.com/sections/my-life/be-the-best-to-your-bestie/",
                     "slug": "be-the-best-to-your-bestie",
@@ -109,7 +109,7 @@ List endpoint:
             {
                 "id": 72,
                 "meta": {
-                    "type": "core.ArticlePage",
+                    "type": "basic.ArticlePage",
                     "detail_url": "http://api.example.com/api/v2/pages/72/",
                     "html_url": "http://api.example.com/sections/my-life/too-many-selfies-yes-or-no/",
                     "slug": "too-many-selfies-yes-or-no",
@@ -134,7 +134,7 @@ Detail endpoint:
     {
         "id": 66,
         "meta": {
-            "type": "core.ArticlePage",
+            "type": "basic.ArticlePage",
             "detail_url": "http://api.example.com/api/v2/pages/66/",
             "html_url": "http://api.example.com/sections/my-life/be-the-best-to-your-bestie/",
             "slug": "be-the-best-to-your-bestie",
@@ -145,7 +145,7 @@ Detail endpoint:
             "parent": {
                 "id": 194,
                 "meta": {
-                    "type": "core.SectionPage",
+                    "type": "basic.SectionPage",
                     "detail_url": "http://api.example.com/api/v2/pages/194/",
                     "html_url": "http://api.example.com/sections/my-life/"
                 },
@@ -202,7 +202,7 @@ Detail endpoint:
             {
                 "id": 276,
                 "meta": {
-                    "type": "core.ArticlePageTags"
+                    "type": "basic.ArticlePageTags"
                 },
                 "tag": {
                     "id": 395,
@@ -219,12 +219,12 @@ Detail endpoint:
             {
                 "id": 40,
                 "meta": {
-                    "type": "core.ArticlePageRecommendedSections"
+                    "type": "basic.ArticlePageRecommendedSections"
                 },
                 "recommended_article": {
                     "id": 90,
                     "meta": {
-                        "type": "core.ArticlePage",
+                        "type": "basic.ArticlePage",
                         "detail_url": "http://api.example.com/api/v2/pages/90/"
                     },
                     "title": "Do you want friends?"

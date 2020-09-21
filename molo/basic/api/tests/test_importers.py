@@ -742,12 +742,12 @@ class TestRecordKeeper(TestCase):
             "recommended_articles": [{
                 "id": 1,
                 "meta": {
-                    "type": "core.ArticlePageRecommendedSections"
+                    "type": "basic.ArticlePageRecommendedSections"
                 },
                 "recommended_article": {
                     "i_d": 27,
                     "meta": {
-                        "type": "core.ArticlePage",
+                        "type": "basic.ArticlePage",
                         "detail_url": "http://localhost:8000/api/v2/pages/27/"
                     },
                     "title": "Article that is nested"
@@ -770,12 +770,12 @@ class TestRecordKeeper(TestCase):
             "recommended_articles": [{
                 "id": 1,
                 "meta": {
-                    "type": "core.ArticlePageRecommendedSections"
+                    "type": "basic.ArticlePageRecommendedSections"
                 },
                 "REKKOMMENDED_ARTICLE": {  # corrupted field
                     "id": 27,
                     "meta": {
-                        "type": "core.ArticlePage",
+                        "type": "basic.ArticlePage",
                         "detail_url": "http://localhost:8000/api/v2/pages/27/"
                     },
                     "title": "Article that is nested"

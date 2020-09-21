@@ -47,7 +47,7 @@ class MainImportViewTestCase(APIMoloTestCase):
     def test_raises_error_if_data_not_available(self, mock_get):
         form_data = {
             "url": "http://localhost:8000/api/v2/pages/",
-            "content_type": "core.ArticlePage"
+            "content_type": "basic.ArticlePage"
         }
         response = self.client.post(
             reverse("molo_api:main-import"),
@@ -64,7 +64,7 @@ class MainImportViewTestCase(APIMoloTestCase):
     def test_redirects_to_parent_chooser(self, mock_get):
         form_data = {
             "url": "http://localhost:8000/",
-            "content_type": "core.ArticlePage"
+            "content_type": "basic.ArticlePage"
         }
         response = self.client.post(
             reverse("molo_api:main-import"),
@@ -101,7 +101,7 @@ class ArticleImportViewTestCase(APIMoloTestCase):
     def test_redirect_to_article_chooser_if_session_not_set(self, mock_get):
         form_data = {
             "url": "http://localhost:8000/",
-            "content_type": "core.ArticlePage"
+            "content_type": "basic.ArticlePage"
         }
         response = self.client.post(
             reverse("molo_api:main-import"),
@@ -138,7 +138,7 @@ class ArticleImportViewTestCase(APIMoloTestCase):
     #     # Choose URL and content type on article import first step
     #     form_data = {
     #         "url": "http://localhost:8000/",
-    #         "content_type": "core.ArticlePage"
+    #         "content_type": "basic.ArticlePage"
     #     }
     #     response = self.client.post(
     #         reverse("molo_api:main-import"),
@@ -199,7 +199,7 @@ class SectionParentChooserTestCase(APIMoloTestCase):
     def test_redirect_to_section_chooser_if_session_not_set(self, mock_get):
         form_data = {
             "url": "http://localhost:8000/",
-            "content_type": "core.SectionPage"
+            "content_type": "basic.SectionPage"
         }
         response = self.client.post(
             reverse("molo_api:main-import"),
@@ -275,7 +275,7 @@ class PagesEndpointTestCase(APIMoloTestCase):
                                    title='Second test page')
 
         # Call the endpoint
-        response = self.client.get('/api/v2/pages/?type=core.ArticlePage')
+        response = self.client.get('/api/v2/pages/?type=basic.ArticlePage')
         self.assertEqual(response.status_code, 200)
 
         # Check both articles are present
@@ -296,7 +296,7 @@ class PagesEndpointTestCase(APIMoloTestCase):
 
         # Call the endpoint, filtering for live articles
         response = self.client.get(
-                '/api/v2/pages/?type=core.ArticlePage&live=true')
+                '/api/v2/pages/?type=basic.ArticlePage&live=true')
         self.assertEqual(response.status_code, 200)
 
         # Check only the live article is present
@@ -315,7 +315,7 @@ class PagesEndpointTestCase(APIMoloTestCase):
 
         # Call the endpoint with a search term
         response = self.client.get(
-                '/api/v2/pages/?type=core.ArticlePage&search=earning+money')
+                '/api/v2/pages/?type=basic.ArticlePage&search=earning+money')
         self.assertEqual(response.status_code, 200)
 
         # Check only the relevant article is present

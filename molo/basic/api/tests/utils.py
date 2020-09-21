@@ -58,7 +58,7 @@ def mocked_requests_get(url, *args, **kwargs):
         return MockResponse(AVAILABLE_ARTICLES["items"][1], 200)
     elif url == "http://localhost:8000/api/v2/pages/12/":
         return MockResponse(AVAILABLE_ARTICLES["items"][2], 200)
-    elif url == "http://localhost:8000/api/v2/pages/?type=core.ArticlePage" \
+    elif url == "http://localhost:8000/api/v2/pages/?type=basic.ArticlePage" \
                 "&fields=title,subtitle,body,tags," \
                 "social_media_title,social_media_description," \
                 "social_media_image,related_sections," \

@@ -7,8 +7,8 @@ ERROR = "ERROR"
 WARNING = "WARNING"
 
 CONTENT_TYPES = [
-    ("core.ArticlePage", "Article"),
-    ("core.SectionPage", "Section"),
+    ("basic.ArticlePage", "Article"),
+    ("basic.SectionPage", "Section"),
 ]
 
 ENDPOINTS = [

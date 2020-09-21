@@ -76,13 +76,13 @@ class Migration(migrations.Migration):
                 ('promote_date', models.DateTimeField(blank=True, null=True)),
                 ('demote_date', models.DateTimeField(blank=True, null=True)),
                 ('image', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailimages.Image')),
-                ('language', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='core.SiteLanguage')),
+                ('language', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='basic.SiteLanguage')),
             ],
             options={
                 'verbose_name': 'Article',
                 'ordering': ('-latest_revision_created_at',),
             },
-            bases=(molo.basic.models.ImportableMixin, molo.basic.models.TranslatablePageMixin, molo.basic.mixins.PageEffectiveImageMixin, 'core.molopage'),
+            bases=(molo.basic.models.ImportableMixin, molo.basic.models.TranslatablePageMixin, molo.basic.mixins.PageEffectiveImageMixin, 'basic.molopage'),
         ),
         migrations.CreateModel(
             name='BannerIndexPage',
@@ -92,7 +92,7 @@ class Migration(migrations.Migration):
             options={
                 'abstract': False,
             },
-            bases=('core.molopage', molo.basic.models.PreventDeleteMixin, molo.basic.models.ImportableMixin),
+            bases=('basic.molopage', molo.basic.models.PreventDeleteMixin, molo.basic.models.ImportableMixin),
         ),
         migrations.CreateModel(
             name='FooterIndexPage',
@@ -102,7 +102,7 @@ class Migration(migrations.Migration):
             options={
                 'abstract': False,
             },
-            bases=('core.molopage', molo.basic.models.PreventDeleteMixin),
+            bases=('basic.molopage', molo.basic.models.PreventDeleteMixin),
         ),
         migrations.CreateModel(
             name='LanguagePage',
@@ -113,7 +113,7 @@ class Migration(migrations.Migration):
             options={
                 'verbose_name': 'Language',
             },
-            bases=('core.molopage',),
+            bases=('basic.molopage',),
         ),
         migrations.CreateModel(
             name='Main',
@@ -123,7 +123,7 @@ class Migration(migrations.Migration):
             options={
                 'abstract': False,
             },
-            bases=('core.molopage',),
+            bases=('basic.molopage',),
         ),
         migrations.CreateModel(
             name='SectionIndexPage',
@@ -133,7 +133,7 @@ class Migration(migrations.Migration):
             options={
                 'abstract': False,
             },
-            bases=('core.molopage', molo.basic.models.PreventDeleteMixin),
+            bases=('basic.molopage', molo.basic.models.PreventDeleteMixin),
         ),
         migrations.CreateModel(
             name='SiteSettings',
@@ -197,7 +197,7 @@ class Migration(migrations.Migration):
             name='LanguageRelation',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('language', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='+', to='core.SiteLanguage')),
+                ('language', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='+', to='basic.SiteLanguage')),
                 ('page', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='languages', to='wagtailcore.Page')),
             ],
         ),
@@ -214,7 +214,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('site', models.OneToOneField(editable=False, on_delete=django.db.models.deletion.CASCADE, to='wagtailcore.Site')),
-                ('timezone', models.ForeignKey(null=True, on_delete=django.db.models.deletion.PROTECT, to='core.Timezone')),
+                ('timezone', models.ForeignKey(null=True, on_delete=django.db.models.deletion.PROTECT, to='basic.Timezone')),
             ],
             options={
                 'verbose_name': 'CMS settings',
@@ -223,25 +223,25 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='FooterPage',
             fields=[
-                ('articlepage_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='core.ArticlePage')),
+                ('articlepage_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='basic.ArticlePage')),
             ],
             options={
                 'abstract': False,
             },
-            bases=('core.articlepage',),
+            bases=('basic.articlepage',),
         ),
         migrations.CreateModel(
             name='SiteLanguageRelation',
             fields=[
-                ('sitelanguage_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='core.SiteLanguage')),
+                ('sitelanguage_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='basic.SiteLanguage')),
                 ('sort_order', models.IntegerField(blank=True, editable=False, null=True)),
-                ('language_setting', modelcluster.fields.ParentalKey(on_delete=django.db.models.deletion.CASCADE, related_name='languages', to='core.Languages')),
+                ('language_setting', modelcluster.fields.ParentalKey(on_delete=django.db.models.deletion.CASCADE, related_name='languages', to='basic.Languages')),
             ],
             options={
                 'ordering': ['sort_order'],
                 'abstract': False,
             },
-            bases=('core.sitelanguage', models.Model),
+            bases=('basic.sitelanguage', models.Model),
         ),
         migrations.CreateModel(
             name='SectionPage',
@@ -264,13 +264,13 @@ class Migration(migrations.Migration):
                 ('enable_recommended_section', models.BooleanField(default=False, help_text="Underneath the area for 'next articles' recommended articles will appear, with the image + heading + subheading", verbose_name='Activate recommended section underneath articles')),
                 ('is_service_aggregator', models.BooleanField(default=False, verbose_name='Service aggregator')),
                 ('image', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailimages.Image')),
-                ('language', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='core.SiteLanguage')),
-                ('translated_pages', models.ManyToManyField(blank=True, related_name='_sectionpage_translated_pages_+', to='core.SectionPage')),
+                ('language', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='basic.SiteLanguage')),
+                ('translated_pages', models.ManyToManyField(blank=True, related_name='_sectionpage_translated_pages_+', to='basic.SectionPage')),
             ],
             options={
                 'verbose_name': 'Section',
             },
-            bases=(molo.basic.models.ImportableMixin, molo.basic.models.TranslatablePageMixin, 'core.molopage'),
+            bases=(molo.basic.models.ImportableMixin, molo.basic.models.TranslatablePageMixin, 'basic.molopage'),
         ),
         migrations.CreateModel(
             name='BannerPage',
@@ -281,13 +281,13 @@ class Migration(migrations.Migration):
                 ('hide_banner_on_freebasics', models.BooleanField(default=False)),
                 ('banner', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailimages.Image')),
                 ('banner_link_page', models.ForeignKey(blank=True, help_text='Optional page to which the banner will link to', null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailcore.Page')),
-                ('language', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='core.SiteLanguage')),
-                ('translated_pages', models.ManyToManyField(blank=True, related_name='_bannerpage_translated_pages_+', to='core.BannerPage')),
+                ('language', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='basic.SiteLanguage')),
+                ('translated_pages', models.ManyToManyField(blank=True, related_name='_bannerpage_translated_pages_+', to='basic.BannerPage')),
             ],
             options={
                 'abstract': False,
             },
-            bases=(molo.basic.models.ImportableMixin, molo.basic.models.TranslatablePageMixin, 'core.molopage'),
+            bases=(molo.basic.models.ImportableMixin, molo.basic.models.TranslatablePageMixin, 'basic.molopage'),
         ),
         migrations.CreateModel(
             name='ArticlePageRelatedSections',
@@ -295,7 +295,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('sort_order', models.IntegerField(blank=True, editable=False, null=True)),
                 ('section', models.ForeignKey(blank=True, help_text='Section that this page also belongs too', null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailcore.Page')),
-                ('page', modelcluster.fields.ParentalKey(on_delete=django.db.models.deletion.CASCADE, related_name='related_sections', to='core.ArticlePage')),
+                ('page', modelcluster.fields.ParentalKey(on_delete=django.db.models.deletion.CASCADE, related_name='related_sections', to='basic.ArticlePage')),
             ],
             options={
                 'ordering': ['sort_order'],
@@ -308,7 +308,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('sort_order', models.IntegerField(blank=True, editable=False, null=True)),
                 ('recommended_article', models.ForeignKey(blank=True, help_text='Recommended articles for this article', null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailcore.Page')),
-                ('page', modelcluster.fields.ParentalKey(on_delete=django.db.models.deletion.CASCADE, related_name='recommended_articles', to='core.ArticlePage')),
+                ('page', modelcluster.fields.ParentalKey(on_delete=django.db.models.deletion.CASCADE, related_name='recommended_articles', to='basic.ArticlePage')),
             ],
             options={
                 'ordering': ['sort_order'],
@@ -320,7 +320,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('tag', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='core_articlepagemetadatatag_items', to='taggit.Tag')),
-                ('content_object', modelcluster.fields.ParentalKey(on_delete=django.db.models.deletion.CASCADE, related_name='metadata_tagged_items', to='core.ArticlePage')),
+                ('content_object', modelcluster.fields.ParentalKey(on_delete=django.db.models.deletion.CASCADE, related_name='metadata_tagged_items', to='basic.ArticlePage')),
             ],
             options={
                 'abstract': False,
@@ -329,7 +329,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='articlepage',
             name='metadata_tags',
-            field=modelcluster.contrib.taggit.ClusterTaggableManager(blank=True, help_text='A comma-separated list of tags. This is not visible to the user.', related_name='metadata_tags', through='core.ArticlePageMetaDataTag', to='taggit.Tag', verbose_name='Tags'),
+            field=modelcluster.contrib.taggit.ClusterTaggableManager(blank=True, help_text='A comma-separated list of tags. This is not visible to the user.', related_name='metadata_tags', through='basic.ArticlePageMetaDataTag', to='taggit.Tag', verbose_name='Tags'),
         ),
         migrations.AddField(
             model_name='articlepage',
@@ -339,7 +339,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='articlepage',
             name='translated_pages',
-            field=models.ManyToManyField(blank=True, related_name='_articlepage_translated_pages_+', to='core.ArticlePage'),
+            field=models.ManyToManyField(blank=True, related_name='_articlepage_translated_pages_+', to='basic.ArticlePage'),
         ),
         migrations.CreateModel(
             name='ArticlePageLanguageProxy',
@@ -352,6 +352,6 @@ class Migration(migrations.Migration):
                 'indexes': [],
                 'constraints': [],
             },
-            bases=('core.articlepage',),
+            bases=('basic.articlepage',),
         ),
     ]

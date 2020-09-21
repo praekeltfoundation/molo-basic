@@ -8,7 +8,7 @@ AVAILABLE_ARTICLES = {
         {
             "id": 10,
             "meta": {
-                "type": "core.ArticlePage",
+                "type": "basic.ArticlePage",
                 "detail_url": "http://localhost:8000/api/v2/pages/10/",
             },
             "title": "Test article 1",
@@ -57,7 +57,7 @@ AVAILABLE_ARTICLES = {
         {
             "id": 11,
             "meta": {
-                "type": "core.ArticlePage",
+                "type": "basic.ArticlePage",
                 "detail_url": "http://localhost:8000/api/v2/pages/11/",
             },
             "title": "Test article 2",
@@ -90,7 +90,7 @@ AVAILABLE_ARTICLES = {
                 {
                     "id": 1,
                     "meta": {
-                        "type": "core.ArticlePageRelatedSections"
+                        "type": "basic.ArticlePageRelatedSections"
                     }
                 }
             ],
@@ -118,7 +118,7 @@ AVAILABLE_ARTICLES = {
         {
             "id": 12,
             "meta": {
-                "type": "core.ArticlePage",
+                "type": "basic.ArticlePage",
                 "detail_url": "http://localhost:8000/api/v2/pages/12/",
             },
             "title": "Test article 3",
@@ -190,7 +190,7 @@ AVAILABLE_SECTIONS = {
         {
             "id": 2,
             "meta": {
-                "type": "core.SectionPage",
+                "type": "basic.SectionPage",
                 "detail_url": "http://localhost:8000/api/v2/pages/28/",
                 "html_url": "http://localhost/sections/wellbeing/"
                             "taking-care-yourself/"
@@ -220,7 +220,7 @@ AVAILABLE_SECTIONS = {
         {
             "id": 3,
             "meta": {
-                "type": "core.SectionPage",
+                "type": "basic.SectionPage",
                 "detail_url": "http://localhost:8000/api/v2/pages/3/",
             },
             "title": "Stress management",
@@ -248,7 +248,7 @@ AVAILABLE_SECTIONS = {
         {
             "id": 4,
             "meta": {
-                "type": "core.SectionPage",
+                "type": "basic.SectionPage",
                 "detail_url": "http://localhost:8000/api/v2/pages/4/",
             },
             "title": "Breastfeeding",
@@ -284,7 +284,7 @@ AVAILABLE_SECTION_CHILDREN = {
         {
             "id": 11,
             "meta": {
-                "type": "core.ArticlePage",
+                "type": "basic.ArticlePage",
                 "detail_url": "http://localhost:8000/api/v2/pages/11/",
             },
             "title": "Test article 11"
@@ -292,7 +292,7 @@ AVAILABLE_SECTION_CHILDREN = {
         {
             "id": 3,
             "meta": {
-                "type": "core.SectionPage",
+                "type": "basic.SectionPage",
                 "detail_url": "http://localhost:8000/api/v2/pages/3/",
             },
             "title": "Test section 3"
@@ -308,14 +308,14 @@ LANGUAGE_LIST_RESPONSE = {
         {
             "id": 1,
             "meta": {
-                "type": "core.SiteLanguage",
+                "type": "basic.SiteLanguage",
                 "detail_url": "http://localhost:8000/api/v2/languages/1/"
             }
         },
         {
             "id": 2,
             "meta": {
-                "type": "core.SiteLanguage",
+                "type": "basic.SiteLanguage",
                 "detail_url": "http://localhost:8000/api/v2/languages/2/"
             }
         }
@@ -325,7 +325,7 @@ LANGUAGE_LIST_RESPONSE = {
 LANGUAGE_RESPONSE_1 = {
     "id": 1,
     "meta": {
-        "type": "core.SiteLanguage",
+        "type": "basic.SiteLanguage",
         "detail_url": "http://localhost:8000/api/v2/languages/1/"
     },
     "locale": "en",
@@ -336,7 +336,7 @@ LANGUAGE_RESPONSE_1 = {
 LANGUAGE_RESPONSE_2 = {
     "id": 2,
     "meta": {
-        "type": "core.SiteLanguage",
+        "type": "basic.SiteLanguage",
         "detail_url": "http://localhost:8000/api/v2/languages/2/"
     },
     "locale": "fr",
@@ -347,7 +347,7 @@ LANGUAGE_RESPONSE_2 = {
 ARTICLE_PAGE_RESPONSE = {
     "id": 9999,
     "meta": {
-        "type": "core.ArticlePage",
+        "type": "basic.ArticlePage",
         "detail_url": "http://localhost:8000/api/v2/pages/12/",
         "html_url": "http://localhost:8000/sections/test-section/article-1/",
         "slug": "article-1",
@@ -358,7 +358,7 @@ ARTICLE_PAGE_RESPONSE = {
         "parent": {
             "id": 11,
             "meta": {
-                "type": "core.SectionPage",
+                "type": "basic.SectionPage",
                 "detail_url": "http://localhost:8000/api/v2/pages/11/",
                 "html_url": "http://localhost:8000/sections/test-section/"
             },
@@ -408,12 +408,12 @@ ARTICLE_PAGE_RESPONSE = {
         {
             "id": 1,
             "meta": {
-                "type": "core.ArticlePageRelatedSections"
+                "type": "basic.ArticlePageRelatedSections"
             },
             "section": {
                 "id": 23,
                 "meta": {
-                    "type": "core.SectionPage",
+                    "type": "basic.SectionPage",
                     "detail_url": "http://localhost:8000/api/v2/pages/23/"
                 },
                 "title": "Another Section"
@@ -422,12 +422,12 @@ ARTICLE_PAGE_RESPONSE = {
         {
             "id": 2,
             "meta": {
-                "type": "core.ArticlePageRelatedSections"
+                "type": "basic.ArticlePageRelatedSections"
             },
             "section": {
                 "id": 26,
                 "meta": {
-                    "type": "core.SectionPage",
+                    "type": "basic.SectionPage",
                     "detail_url": "http://localhost:8000/api/v2/pages/26/"
                 },
                 "title": "Sub Section Test"
@@ -463,7 +463,7 @@ ARTICLE_PAGE_RESPONSE = {
         {
             "id": 1,
             "meta": {
-                "type": "core.ArticlePageReactionQuestions"
+                "type": "basic.ArticlePageReactionQuestions"
             },
             "reaction_question": {
                 "id": 37,
@@ -477,7 +477,7 @@ ARTICLE_PAGE_RESPONSE = {
         {
             "id": 2,
             "meta": {
-                "type": "core.ArticlePageReactionQuestions"
+                "type": "basic.ArticlePageReactionQuestions"
             },
             "reaction_question": {
                 "id": 38,
@@ -493,7 +493,7 @@ ARTICLE_PAGE_RESPONSE = {
         {
             "id": 1,
             "meta": {
-                "type": "core.ArticlePageTags"
+                "type": "basic.ArticlePageTags"
             },
             "tag": {
                 "id": 35,
@@ -509,12 +509,12 @@ ARTICLE_PAGE_RESPONSE = {
         {
             "id": 1,
             "meta": {
-                "type": "core.ArticlePageRecommendedSections"
+                "type": "basic.ArticlePageRecommendedSections"
             },
             "recommended_article": {
                 "id": 27,
                 "meta": {
-                    "type": "core.ArticlePage",
+                    "type": "basic.ArticlePage",
                     "detail_url": "http://localhost:8000/api/v2/pages/27/"
                 },
                 "title": "Article that is nested"
@@ -523,12 +523,12 @@ ARTICLE_PAGE_RESPONSE = {
         {
             "id": 2,
             "meta": {
-                "type": "core.ArticlePageRecommendedSections"
+                "type": "basic.ArticlePageRecommendedSections"
             },
             "recommended_article": {
                 "id": 22,
                 "meta": {
-                    "type": "core.ArticlePage",
+                    "type": "basic.ArticlePage",
                     "detail_url": "http://localhost:8000/api/v2/pages/22/"
                 },
                 "title": "Article to Import 1"
@@ -543,7 +543,7 @@ ARTICLE_PAGE_RESPONSE = {
 ARTICLE_PAGE_RESPONSE_STREAM_FIELDS = {
     "id": 92,
     "meta": {
-        "type": "core.ArticlePage",
+        "type": "basic.ArticlePage",
         "detail_url": "http://localhost:9000/api/v2/pages/92/",
         "html_url": "http://localhost:9000/sections/test-section/article-all-stream-fields/",  # noqa
         "slug": "article-all-stream-fields",
@@ -554,7 +554,7 @@ ARTICLE_PAGE_RESPONSE_STREAM_FIELDS = {
         "parent": {
             "id": 11,
             "meta": {
-                "type": "core.SectionPage",
+                "type": "basic.SectionPage",
                 "detail_url": "http://localhost:9000/api/v2/pages/11/",
                 "html_url": "http://localhost:9000/sections/test-section/"
             },
@@ -629,7 +629,7 @@ ARTICLE_PAGE_RESPONSE_STREAM_FIELDS = {
 SECTION_PAGE_RESPONSE = {
     "id": 11,
     "meta": {
-        "type": "core.SectionPage",
+        "type": "basic.SectionPage",
         "detail_url": "http://localhost:8000/api/v2/pages/11/",
         "html_url": "http://localhost:8000/sections/test-section/",
         "slug": "test-section",
@@ -708,7 +708,7 @@ SECTION_PAGE_RESPONSE = {
         {
             "id": 1,
             "meta": {
-                "type": "core.SectionPageTags"
+                "type": "basic.SectionPageTags"
             },
             "tag": {
                 "id": 36,
@@ -722,7 +722,7 @@ SECTION_PAGE_RESPONSE = {
         {
             "id": 2,
             "meta": {
-                "type": "core.SectionPageTags"
+                "type": "basic.SectionPageTags"
             },
             "tag": {
                 "id": 35,
@@ -777,7 +777,7 @@ BANNER_SITE_RESPONSE = {
     "banner_link_page": {
         "id": 13,
         "meta": {
-            "type": "core.ArticlePage",
+            "type": "basic.ArticlePage",
             "detail_url": "http://localhost:8000/api/v2/pages/13/"
         },
         "title": "French translation of Article 1"
@@ -884,7 +884,7 @@ IMAGE_DETAIL_1_NO_HASH = {
 ARTICLE_PAGE_RESPONSE_MAIN_LANG = {
     "id": 12,
     "meta": {
-        "type": "core.ArticlePage",
+        "type": "basic.ArticlePage",
         "detail_url": "http://localhost:8000/api/v2/pages/12/",
         "html_url": "http://localhost:8000/sections/test-section/article-1/",
         "slug": "article-1",
@@ -895,7 +895,7 @@ ARTICLE_PAGE_RESPONSE_MAIN_LANG = {
         "parent": {
             "id": 11,
             "meta": {
-                "type": "core.SectionPage",
+                "type": "basic.SectionPage",
                 "detail_url": "http://localhost:8000/api/v2/pages/11/",
                 "html_url": "http://localhost:8000/sections/test-section/"
             },
@@ -946,7 +946,7 @@ ARTICLE_PAGE_RESPONSE_MAIN_LANG = {
 ARTICLE_PAGE_RESPONSE_FRENCH = {
     "id": 13,
     "meta": {
-        "type": "core.ArticlePage",
+        "type": "basic.ArticlePage",
         "detail_url": "http://localhost:8000/api/v2/pages/13/",
         "html_url": "http://localhost:8000/sections/test-section/french-translation-of-article-1/",  # noqa
         "slug": "french-translation-of-article-1",
@@ -957,7 +957,7 @@ ARTICLE_PAGE_RESPONSE_FRENCH = {
         "parent": {
             "id": 11,
             "meta": {
-                "type": "core.SectionPage",
+                "type": "basic.SectionPage",
                 "detail_url": "http://localhost:8000/api/v2/pages/11/",
                 "html_url": "http://localhost:8000/sections/test-section/"
             },
@@ -1041,7 +1041,7 @@ BANNER_PAGE_RESPONSE = {
     "banner_link_page": {
         "id": 13,
         "meta": {
-            "type": "core.ArticlePage",
+            "type": "basic.ArticlePage",
             "detail_url": "http://localhost:8000/api/v2/pages/13/"
         },
         "title": "French translation of Article 1"
@@ -1083,7 +1083,7 @@ TAG_PAGE_RESPONSE = {
 SECTION_PAGE_RESPONSE_FRENCH = {
     "id": 25,
     "meta": {
-        "type": "core.SectionPage",
+        "type": "basic.SectionPage",
         "detail_url": "http://localhost:8000/api/v2/pages/25/",
         "html_url": "http://localhost:8000/sections/french-translation-of-test-section/",  # noqa
         "slug": "french-translation-of-test-section",
@@ -1194,7 +1194,7 @@ SECTION_INDEX_PAGE_RESPONSE = {
 SECTION_RESPONSE_1 = {
     "id": 178,
     "meta": {
-        "type": "core.SectionPage",
+        "type": "basic.SectionPage",
         "detail_url": "http://localhost:8000/api/v2/pages/178/",
         "html_url": "http://localhost:8000/sections/section-1/",
         "slug": "section-1",
@@ -1252,7 +1252,7 @@ SECTION_RESPONSE_1 = {
 SECTION_RESPONSE_1_TRANSLATION_1 = {
     "id": 180,
     "meta": {
-        "type": "core.SectionPage",
+        "type": "basic.SectionPage",
         "detail_url": "http://localhost:8000/api/v2/pages/180/",
         "html_url": "http://localhost:8000/sections/french-translation-of-section-1/",  # noqa
         "slug": "french-translation-of-section-1",
@@ -1301,7 +1301,7 @@ SECTION_RESPONSE_1_TRANSLATION_1 = {
 ARTICLE_RESPONSE_1 = {
     "id": 181,
     "meta": {
-        "type": "core.ArticlePage",
+        "type": "basic.ArticlePage",
         "detail_url": "http://localhost:8000/api/v2/pages/181/",
         "html_url": "http://localhost:8000/sections/section-1/article-1/",
         "slug": "article-1",
@@ -1312,7 +1312,7 @@ ARTICLE_RESPONSE_1 = {
         "parent": {
             "id": 178,
             "meta": {
-                "type": "core.SectionPage",
+                "type": "basic.SectionPage",
                 "detail_url": "http://localhost:8000/api/v2/pages/178/",
                 "html_url": "http://localhost:8000/sections/section-1/"
             },
@@ -1359,7 +1359,7 @@ ARTICLE_RESPONSE_1 = {
 ARTICLE_RESPONSE_1_TRANSLATION = {
     "id": 183,
     "meta": {
-        "type": "core.ArticlePage",
+        "type": "basic.ArticlePage",
         "detail_url": "http://localhost:8000/api/v2/pages/183/",
         "html_url": "http://localhost:8000/sections/section-1/french-translation-of-article-1-2/",  # noqa
         "slug": "french-translation-of-article-1-2",
@@ -1370,7 +1370,7 @@ ARTICLE_RESPONSE_1_TRANSLATION = {
         "parent": {
             "id": 178,
             "meta": {
-                "type": "core.SectionPage",
+                "type": "basic.SectionPage",
                 "detail_url": "http://localhost:8000/api/v2/pages/178/",
                 "html_url": "http://localhost:8000/sections/section-1/"
             },
@@ -1417,7 +1417,7 @@ ARTICLE_RESPONSE_1_TRANSLATION = {
 ARTICLE_RESPONSE_2 = {
     "id": 182,
     "meta": {
-        "type": "core.ArticlePage",
+        "type": "basic.ArticlePage",
         "detail_url": "http://localhost:8000/api/v2/pages/182/",
         "html_url": "http://localhost:8000/sections/section-1/article-2/",
         "slug": "article-2",
@@ -1428,7 +1428,7 @@ ARTICLE_RESPONSE_2 = {
         "parent": {
             "id": 178,
             "meta": {
-                "type": "core.SectionPage",
+                "type": "basic.SectionPage",
                 "detail_url": "http://localhost:8000/api/v2/pages/178/",
                 "html_url": "http://localhost:8000/sections/section-1/"
             },
@@ -1470,7 +1470,7 @@ ARTICLE_RESPONSE_2 = {
 SECTION_RESPONSE_2 = {
     "id": 179,
     "meta": {
-        "type": "core.SectionPage",
+        "type": "basic.SectionPage",
         "detail_url": "http://localhost:8000/api/v2/pages/179/",
         "html_url": "http://localhost:8000/sections/section-2/",
         "slug": "section-2",
@@ -1519,7 +1519,7 @@ SECTION_RESPONSE_2 = {
 SUB_SECTION_RESPONSE_1 = {
     "id": 184,
     "meta": {
-        "type": "core.SectionPage",
+        "type": "basic.SectionPage",
         "detail_url": "http://localhost:8000/api/v2/pages/184/",
         "html_url": "http://localhost:8000/sections/section-2/sub-section/",
         "slug": "sub-section",
@@ -1530,7 +1530,7 @@ SUB_SECTION_RESPONSE_1 = {
         "parent": {
             "id": 179,
             "meta": {
-                "type": "core.SectionPage",
+                "type": "basic.SectionPage",
                 "detail_url": "http://localhost:8000/api/v2/pages/179/",
                 "html_url": "http://localhost:8000/sections/section-2/"
             },
@@ -1568,7 +1568,7 @@ SUB_SECTION_RESPONSE_1 = {
 NESTED_ARTICLE_RESPONSE = {
     "id": 185,
     "meta": {
-        "type": "core.ArticlePage",
+        "type": "basic.ArticlePage",
         "detail_url": "http://localhost:8000/api/v2/pages/185/",
         "html_url": "http://localhost:8000/sections/section-2/sub-section/article-3/",  # noqa
         "slug": "article-3",
@@ -1579,7 +1579,7 @@ NESTED_ARTICLE_RESPONSE = {
         "parent": {
             "id": 184,
             "meta": {
-                "type": "core.SectionPage",
+                "type": "basic.SectionPage",
                 "detail_url": "http://localhost:8000/api/v2/pages/184/",
                 "html_url": "http://localhost:8000/sections/section-2/sub-section/"  # noqa
             },
@@ -1622,14 +1622,14 @@ NESTED_FIELD_NAV_TAG_WITH_NONE = {
         {
             "id": 10,
             "meta": {
-                "type": "core.ArticlePageTags"
+                "type": "basic.ArticlePageTags"
             },
             "tag": None
         },
         {
             "id": 11,
             "meta": {
-                "type": "core.ArticlePageTags"
+                "type": "basic.ArticlePageTags"
             },
             "tag": {
                 "id": 28170,
@@ -1646,7 +1646,7 @@ NESTED_FIELD_NAV_TAG_WITH_NONE = {
 ARTICLE_WITH_ONLY_IMAGE_RESPONSE = {
     "id": 93,
     "meta": {
-        "type": "core.ArticlePage",
+        "type": "basic.ArticlePage",
         "detail_url": "http://localhost:9000/api/v2/pages/93/",
         "html_url": "http://localhost:9000/sections/test-section/bare-article/",  # noqa
         "slug": "bare-article",
@@ -1657,7 +1657,7 @@ ARTICLE_WITH_ONLY_IMAGE_RESPONSE = {
         "parent": {
             "id": 11,
             "meta": {
-                "type": "core.SectionPage",
+                "type": "basic.SectionPage",
                 "detail_url": "http://localhost:9000/api/v2/pages/11/",
                 "html_url": "http://localhost:9000/sections/test-section/"
             },
