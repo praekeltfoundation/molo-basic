@@ -12,7 +12,6 @@ def read(*parts):
 
 
 install_requires = [
-    'molo.core~=10.2.8',
     'babel',
     'beautifulsoup4==4.6.0',
     'cached-property',

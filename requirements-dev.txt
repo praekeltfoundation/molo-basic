@@ -7,3 +7,4 @@ pytest-django==3.5.1
 responses
 python-dateutil
 beautifulsoup4
+molo.core~=10.2.8
