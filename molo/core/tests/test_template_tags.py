@@ -1,9 +1,10 @@
 # coding=utf-8
 import pytest
 from mock import patch
-from django.contrib.auth.models import User
+
 from django.utils import timezone
 from django.test import TestCase, RequestFactory
+
 from molo.core.models import (
     Main, SiteLanguageRelation, Languages, BannerPage,
     SiteSettings, ArticleOrderingChoices)

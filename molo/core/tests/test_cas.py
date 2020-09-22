@@ -123,7 +123,7 @@ class CASTestCase(TestCase, MoloTestCaseMixin):
         self.assertContains(
             response, 'You do not have permission to access this site.',
             status_code=403)
-        user = User.objects.get(username='test@example.com')
+        User.objects.get(username='test@example.com')
         response = self.client.get(
             '/admin/login/',
             {'ticket': 'fake-ticket', 'next': '/admin/'},
@@ -131,6 +131,7 @@ class CASTestCase(TestCase, MoloTestCaseMixin):
 
         self.assertContains(response, 'Welcome to the testapp Wagtail CMS')
         response = self.client.get('/admin/logout/', follow=True)
+        self.assertEqual(response.status_code, 200)
         client = Client(HTTP_HOST=Main.objects.last().get_site().hostname)
         response = client.get(
             '/admin/login/',

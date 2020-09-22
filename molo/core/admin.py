@@ -10,10 +10,7 @@ from wagtail.contrib.modeladmin.options import (
 )
 from wagtail.contrib.modeladmin.options import ModelAdminGroup
 
-from molo.core.models import (
-    ArticlePage,
-    ArticlePageLanguageProxy, SectionPage
-)
+from molo.core import models
 
 
 class DateFilter(DateRangeFilter):
@@ -22,7 +19,7 @@ class DateFilter(DateRangeFilter):
 
 
 class SectionPageAdmin(WagtailModelAdmin):
-    model = SectionPage
+    model = models.SectionPage
 
 
 modeladmin_register(SectionPageAdmin)
@@ -81,7 +78,7 @@ class SectionListFilter(admin.SimpleListFilter):
         in the right sidebar.
         """
         list_tuple = []
-        for article in ArticlePage.objects.all():
+        for article in models.ArticlePage.objects.all():
             if article.get_parent_section():
                 section_tuple = (
                     article.get_parent_section().id,
@@ -99,7 +96,7 @@ class SectionListFilter(admin.SimpleListFilter):
         """
         if self.value():
             try:
-                section = SectionPage.objects.get(id=self.value())
+                section = models.SectionPage.objects.get(id=self.value())
                 return queryset.child_of(section).all()
             except (ObjectDoesNotExist, MultipleObjectsReturned):
                 return None
@@ -107,7 +104,7 @@ class SectionListFilter(admin.SimpleListFilter):
 
 class ArticleModelAdmin(WagtailModelAdmin, ArticleAdmin):
 
-    model = ArticlePageLanguageProxy
+    model = models.ArticlePageLanguageProxy
     menu_label = 'Articles'
     menu_icon = 'doc-full-inverse'
     list_display = [
@@ -194,7 +191,7 @@ class ArticleModelAdmin(WagtailModelAdmin, ArticleAdmin):
     first_created_at.allow_tags = True
 
     def get_queryset(self, request):
-        qs = ArticlePageLanguageProxy.objects.descendant_of(
+        qs = models.ArticlePageLanguageProxy.objects.descendant_of(
             request.site.root_page)
         return qs
 
@@ -206,3 +203,15 @@ class AdminViewGroup(ModelAdminGroup):
     items = (
         ArticleModelAdmin,
     )
+
+
+class FormPageAdmin(WagtailModelAdmin):
+    model = models.FormPage
+
+
+class FormSubmissionAdmin(WagtailModelAdmin):
+    model = models.FormSubmission
+
+
+modeladmin_register(FormPageAdmin)
+modeladmin_register(FormSubmissionAdmin)

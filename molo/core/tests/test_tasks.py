@@ -1,9 +1,12 @@
+import pytest
+from json import dumps
 from datetime import timedelta
 
-from json import dumps
-import pytest
 from django.test import TestCase
 from django.utils import timezone
+
+from wagtail.core.models import Site
+from wagtail.contrib.settings.context_processors import SettingsProxy
 
 from molo.core.models import FooterPage, ArticlePage, Main, \
     SiteLanguageRelation, Languages, SiteSettings
@@ -11,9 +14,6 @@ from molo.core.tests.base import MoloTestCaseMixin
 from molo.core.tasks import rotate_content, demote_articles, promote_articles
 from molo.core.templatetags.core_tags import \
     load_descendant_articles_for_section
-
-from wagtail.core.models import Site
-from wagtail.contrib.settings.context_processors import SettingsProxy
 
 
 @pytest.mark.django_db

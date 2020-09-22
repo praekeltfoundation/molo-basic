@@ -1,5 +1,7 @@
 # coding=utf-8
 import pytest
+from mock import patch
+
 from django.test import TestCase, RequestFactory
 from django.utils import timezone
 from django.urls import reverse
@@ -7,7 +9,7 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.contrib.contenttypes.models import ContentType
 
-from mock import patch
+from wagtail.images.tests.utils import Image, get_test_image_file
 
 from molo.core.models import (
     ArticlePage, CmsSettings, Main,
@@ -21,7 +23,6 @@ from molo.core.templatetags.core_tags import (
 from molo.core.tests.base import MoloTestCaseMixin
 from molo.core.tasks import promote_articles
 from molo.core.wagtail_hooks import copy_translation_pages
-from wagtail.images.tests.utils import Image, get_test_image_file
 
 
 @pytest.mark.django_db
