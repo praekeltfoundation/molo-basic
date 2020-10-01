@@ -203,15 +203,3 @@ class AdminViewGroup(ModelAdminGroup):
     items = (
         ArticleModelAdmin,
     )
-
-
-class FormPageAdmin(WagtailModelAdmin):
-    model = models.FormPage
-
-
-class FormSubmissionAdmin(WagtailModelAdmin):
-    model = models.FormSubmission
-
-
-modeladmin_register(FormPageAdmin)
-modeladmin_register(FormSubmissionAdmin)

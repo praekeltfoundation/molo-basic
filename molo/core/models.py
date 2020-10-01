@@ -33,8 +33,7 @@ from wagtail.core import blocks
 from wagtail.images.models import Image
 from wagtail.core.models import PageManager
 from wagtail.core.signals import page_unpublished
-from wagtail.contrib.forms.models import \
-    AbstractForm, AbstractFormField, AbstractFormSubmission
+from wagtail.contrib.forms.models import AbstractForm, AbstractFormField
 from wagtail.contrib.routable_page.models import route, RoutablePageMixin
 
 
@@ -1644,13 +1643,6 @@ class FormPage(AbstractForm):
 class FormField(AbstractFormField):
     page = ParentalKey(
         FormPage, on_delete=models.CASCADE, related_name='form_fields')
-
-
-class FormSubmission(AbstractFormSubmission):
-    """Data for a Form submission."""
-    page = models.ForeignKey(
-        Page, blank=True, null=True,
-        on_delete=models.CASCADE, related_name='submissions')
 
 
 @receiver(index_pages_after_copy, sender=Main)
