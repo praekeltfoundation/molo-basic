@@ -1646,13 +1646,6 @@ class FormField(AbstractFormField):
         FormPage, on_delete=models.CASCADE, related_name='form_fields')
 
 
-class FormSubmission(AbstractFormSubmission):
-    """Data for a Form submission."""
-    page = models.ForeignKey(
-        Page, blank=True, null=True,
-        on_delete=models.CASCADE, related_name='submissions')
-
-
 @receiver(index_pages_after_copy, sender=Main)
 def create_form_index_pages(sender, instance, **kwargs):
     kw = dict(title='Forms', slug='form-pages')
