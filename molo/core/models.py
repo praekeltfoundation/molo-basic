@@ -33,8 +33,7 @@ from wagtail.core import blocks
 from wagtail.images.models import Image
 from wagtail.core.models import PageManager
 from wagtail.core.signals import page_unpublished
-from wagtail.contrib.forms.models import \
-    AbstractForm, AbstractFormField, AbstractFormSubmission
+from wagtail.contrib.forms.models import AbstractForm, AbstractFormField
 from wagtail.contrib.routable_page.models import route, RoutablePageMixin
 
 
