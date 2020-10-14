@@ -7,13 +7,15 @@ from django.test import TestCase, RequestFactory
 
 from molo.core.models import (
     Main, SiteLanguageRelation, Languages, BannerPage,
-    SiteSettings, ArticleOrderingChoices)
+    SiteSettings, ArticleOrderingChoices, LanguageRelation,
+    FormPage, FormIndexPage
+)
 from molo.core.tests.base import MoloTestCaseMixin
 from molo.core.templatetags.core_tags import (
     get_parent, bannerpages, get_recommended_articles,
     hero_article, render_translations, load_descendant_articles_for_section,
     load_child_articles_for_section,
-    load_sections
+    load_sections, latest_form_listing
 )
 
 
@@ -272,3 +274,45 @@ class TestModels(TestCase, MoloTestCaseMixin):
         self.assertTrue(your_body in load_sections(context))
         self.assertTrue(your_body not in load_sections(
             context, service_aggregator=True))
+
+
+class TestFormTemplateTags(TestCase, MoloTestCaseMixin):
+
+    def setUp(self):
+        self.mk_main()
+        self.main = Main.objects.all().first()
+        self.language_setting = Languages.objects.create(
+            site_id=self.main.get_site().pk)
+
+        self.english = SiteLanguageRelation.objects.create(
+            language_setting=self.language_setting,
+            locale='en', is_active=True)
+
+        LanguageRelation.objects.create(
+            page=self.main, language=self.english)
+
+        self.yourmind = self.mk_section(
+            self.section_index, title='Your mind')
+        self.yourmind_sub = self.mk_section(
+            self.yourmind, title='Your mind subsection')
+
+        self.form_index, created = FormIndexPage.\
+            objects.get_or_create(title='Forms', slug='form-pages')
+        if created:
+            self.main.add_child(instance=self.form_index)
+            self.form_index.save_revision().publish()
+
+        for i in range(1, 5):
+            kw = {
+                'title': 'test form {}'.format(i)}
+            form = 'form{}'.format(i)
+            setattr(self, form, FormPage(**kw))
+            self.form_index.add_child(instance=getattr(self, form))
+            self.form_index.save_revision().publish()
+
+    def test_latest_form_listing(self):
+        limit = 2
+        res = latest_form_listing(limit)
+        self.assertEqual(len(res['forms']), limit)
+        self.assertEqual(res['forms'][0].title, 'test form 4')
+        self.assertEqual(res['forms'][1].title, 'test form 3')
