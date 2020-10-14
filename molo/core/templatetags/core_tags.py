@@ -12,7 +12,8 @@ from prometheus_client import Summary
 from molo.core.decorators import prometheus_query_count
 from molo.core.models import (
     Page, ArticlePage, SectionPage, SiteSettings, Languages,
-    SectionIndexPage, BannerPage, ArticleOrderingChoices
+    SectionIndexPage, BannerPage, ArticleOrderingChoices,
+    FormPage
 )
 
 
@@ -521,3 +522,14 @@ def get_recommended_articles(context, article):
 @register.simple_tag(takes_context=True)
 def should_hide_delete_button(context, page):
     return hasattr(page.specific, 'hide_delete_button')
+
+
+@register.inclusion_tag(
+    'core/latest-form-listing.html',
+    takes_context=False)
+def latest_form_listing(limit=3):
+    ctx = {
+        'forms':
+            FormPage.objects.all().order_by('-first_published_at')[:limit]
+    }
+    return ctx
