@@ -113,7 +113,7 @@ class MoloGoogleAnalyticsMiddleware(django.utils.deprecation.MiddlewareMixin):
             title = None
 
         path = request.get_full_path()
-        custom_params['ul'] = get_language_from_request(request)
+        custom_params['cd10'] = get_language_from_request(request)
         referer = request.META.get('HTTP_REFERER', '')
         if hasattr(request, 'user') and hasattr(request.user, 'profile')\
                 and request.user.profile.uuid:
