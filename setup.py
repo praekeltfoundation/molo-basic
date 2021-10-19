@@ -25,7 +25,7 @@ install_requires = [
     'django-google-analytics-app~=4.4.0',
     'django-libsass',
     'django-mptt~=0.11.0',
-    'djangorestframework4.0,>=3.11.1',
+    'djangorestframework<4.0,>=3.11.1',
     'django-phonenumber-field==1.3.0',
     'django-import-export',
     'django-daterange-filter',
