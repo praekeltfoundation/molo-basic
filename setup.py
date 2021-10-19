@@ -19,7 +19,7 @@ install_requires = [
     'cookiecutter==1.0.0',
     'dj-database-url',
     'Django~=2.2.5',
-    'django-cas-ng~=3.6.0',
+    'django-cas-ng==4.1.1',
     'django-el-pagination==3.1.0',
     'django-extensions>=1,<2',
     'django-google-analytics-app==5.0.1',
