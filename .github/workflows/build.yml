@@ -27,12 +27,10 @@ jobs:
       run: |
         flake8 molo --count --select=E9,F63,F7,F82 --max-complexity=20 --max-line-length=90 --statistics
         flake8 --config=molo/core/migrations/.flake8 molo/core/migrations/ --select=E9,F63,F7,F82
-        flake8 --config=molo/profiles/migrations/.flake8 molo/profiles/migrations/ --select=E9,F63,F7,F82
     - name: Test with pytest
       run: |
         molo scaffold testapp
         mkdir -p testapp/testapp/templates/registration/
-        cp molo/profiles/test_templates/login.html testapp/testapp/templates/registration/
         cp local_test_settings.py testapp/testapp/settings/local.py
         python testapp/manage.py runscript template_lint
         flake8 testapp
