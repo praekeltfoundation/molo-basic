@@ -1,6 +1,6 @@
 {% raw %}
 
-{% mask element.json.data.BaseTeaser as "teaser" %}
+{% with element.json.data.BaseTeaser as "teaser" %}
 <h3 class="{{ teaser.modifiers }}-teaser__title">
   <a href="#" class="{{ teaser.modifiers }}-teaser__title-link">{{ teaser.title }}</a></h3>
 {% if teaser.subtitle %}

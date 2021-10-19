@@ -1,6 +1,6 @@
 {% raw %}
 
-{% mask element.json.data.HeadingTypes.heading_texts as "headings" %}
+{% with element.json.data.HeadingTypes.heading_texts as "headings" %}
   <div class="heading heading__{{headings.modifiers}}">
     <{{headings.htmltag}}>{{ headings.text }}</{{headings.htmltag}}>
   </div>

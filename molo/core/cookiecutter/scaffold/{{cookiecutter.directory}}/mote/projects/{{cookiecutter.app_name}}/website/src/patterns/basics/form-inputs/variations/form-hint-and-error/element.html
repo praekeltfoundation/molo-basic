@@ -1,6 +1,6 @@
 {% raw %}
 
-{% mask element.json.data.helperInputs as "inputfields" %}
+{% with element.json.data.helperInputs as "inputfields" %}
   <fieldset>
     <label>{{inputfields.textInput.label}}</label>
     <input type="{{inputfields.textInput.input}}" placeholder="{{inputfields.textInput.placeholder}}" name="{{inputfields.textInput.name}}" />

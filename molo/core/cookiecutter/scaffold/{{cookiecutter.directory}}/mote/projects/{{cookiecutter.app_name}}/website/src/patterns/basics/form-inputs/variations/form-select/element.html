@@ -1,6 +1,6 @@
 {% raw %}
 
-{% mask element.json.data.FormInputs as "inputfields" %}
+{% with element.json.data.FormInputs as "inputfields" %}
   {% for item in inputfields.selectInputs %}
   <fieldset>
     <label>{{item.label}}</label>

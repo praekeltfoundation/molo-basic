@@ -1,6 +1,6 @@
 {% raw %}
 
-{% mask element.json.data.Language_list as "language_list" %}
+{% with element.json.data.Language_list as "language_list" %}
 <div class="languages">
   <ul class="language-list language-list--standard">
     {% for item in language_list.languages %}

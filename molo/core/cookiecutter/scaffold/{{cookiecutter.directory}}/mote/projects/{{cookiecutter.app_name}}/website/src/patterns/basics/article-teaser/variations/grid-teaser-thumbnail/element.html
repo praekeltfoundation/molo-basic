@@ -1,6 +1,6 @@
 {% raw %}
 
-{% mask element.json.data.GridTeaserThumbnail as "thumbnail" %}
+{% with element.json.data.GridTeaserThumbnail as "thumbnail" %}
 {% if thumbnail.img %}
 <a href="#" class="{{ thumbnail.modifiers }}-teaser__thumbnail-link">
   <img alt="{{ thumbnail.img.alt }}" src="{{ thumbnail.img.src }}" width="96" class="{{ thumbnail.modifiers }}-teaser__thumbnail" />

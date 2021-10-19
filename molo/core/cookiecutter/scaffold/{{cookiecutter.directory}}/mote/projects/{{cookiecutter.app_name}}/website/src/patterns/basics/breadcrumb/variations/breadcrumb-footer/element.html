@@ -1,6 +1,6 @@
 {% raw %}
 
-{% mask element.json.data.Breadcrumb as "breadcrumb" %}
+{% with element.json.data.Breadcrumb as "breadcrumb" %}
 <div class="breadcrumbs breadcrumbs--footer">
   <ul class="footer-breadcrumbs-list">
   {% for item in breadcrumb.breadcrumb_links %}

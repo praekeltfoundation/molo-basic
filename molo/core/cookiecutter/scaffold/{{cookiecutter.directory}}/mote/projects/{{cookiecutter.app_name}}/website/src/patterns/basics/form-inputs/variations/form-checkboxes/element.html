@@ -1,6 +1,6 @@
 {% raw %}
 
-{% mask element.json.data.FormInputs as "inputfields" %}
+{% with element.json.data.FormInputs as "inputfields" %}
   {% for item in inputfields.checkBoxes %}
   <fieldset>
     <div class="heading heading__subheading">
