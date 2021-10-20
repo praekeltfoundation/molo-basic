@@ -45,6 +45,13 @@ urlpatterns = [
         views.home_more,
         name='home_more'
     ),
+    url(r'^api/', include(
+        ('molo.core.api.urls', 'molo.api'), namespace='molo_api')),
+
+    url(r'^api/v2/', include((
+        decorate_urlpatterns(api_router.get_urlpatterns(), never_cache),
+        'molo.api'), namespace=api_router.url_namespace
+    )),
     url(
         r'^versions/$',
         views.versions,
