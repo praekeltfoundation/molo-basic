@@ -98,8 +98,9 @@ class ReadOnlyPanel(EditHandler):
 
 
 
-class ArticleOrderingChoices(enum.Enum)):
+class ArticleOrderingChoices(enum.Enum):
     pass
+
 
 class ArticleOrderingChoices2(models.TextChoices):
     CMS_DEFAULT_SORTING = '1', _('CMS Default Sorting')
