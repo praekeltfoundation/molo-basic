@@ -9,7 +9,7 @@ from itertools import chain
 from django.utils import timezone as django_timezone
 from django.conf import settings
 from django.db import models
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from django.utils.translation import get_language_from_request
 from django.shortcuts import redirect
 from django.db.models.signals import (pre_save, post_save)
@@ -97,20 +97,12 @@ class ReadOnlyPanel(EditHandler):
             self.heading, _(':'), self.render())
 
 
-class ArticleOrderingChoices(enum.Enum):
-    CMS_DEFAULT_SORTING = 1
-    FIRST_PUBLISHED_AT = 2
-    FIRST_PUBLISHED_AT_DESC = 3
-    PK = 4
-    PK_DESC = 5
-
-    labels = {
-        CMS_DEFAULT_SORTING: 'CMS Default Sorting',
-        FIRST_PUBLISHED_AT: 'First Published At',
-        FIRST_PUBLISHED_AT_DESC: 'First Published At Desc',
-        PK: 'Primary Key',
-        PK_DESC: 'Primary Key Desc',
-    }
+class ArticleOrderingChoices2(models.TextChoices):
+    CMS_DEFAULT_SORTING = '1', _('CMS Default Sorting')
+    FIRST_PUBLISHED_AT = '2', _('First Published At')
+    FIRST_PUBLISHED_AT_DESC = '3', _('First Published At Desc')
+    PK = '4', _('Primary Key')
+    PK_DESC = '5', _('Primary Key Desc')
 
 
 @register_setting
@@ -258,8 +250,9 @@ class SiteSettings(BaseSetting):
         on_delete=models.SET_NULL,
         related_name='+'
     )
-    article_ordering_within_section = enum.EnumField(
-        ArticleOrderingChoices, null=True, blank=True, default=None,
+    article_ordering_within_section = models.TextField(
+        choices=ArticleOrderingChoices2.choices,
+        null=True, blank=True, default=None,
         help_text="Ordering of articles within a section"
     )
 

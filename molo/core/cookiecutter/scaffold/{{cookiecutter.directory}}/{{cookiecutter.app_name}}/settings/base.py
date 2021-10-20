@@ -53,7 +53,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django_extensions',
     'django_prometheus',
-
+    'rangefilter',
     'taggit',
     'modelcluster',
 
@@ -78,7 +78,6 @@ INSTALLED_APPS = [
     'wagtail.contrib.settings',
     'wagtail.contrib.modeladmin',
     'wagtail.api.v2',
-
     'mptt',
     'el_pagination',
 {% for app_name, _ in cookiecutter.include %}    '{{app_name}}',

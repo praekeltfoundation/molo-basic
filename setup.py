@@ -49,6 +49,7 @@ install_requires = [
     'prometheus_client',
     'django-enumfield==2.0.2',
     'django-utils-six'
+    'django-admin-rangefilter==0.6.3',
 ]
 
 # we need to only install typing for python2
