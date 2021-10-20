@@ -14,9 +14,7 @@ from os import environ
 from django.conf import global_settings, locale
 from django.utils.translation import ugettext_lazy as _
 import dj_database_url
-import djcelery
 from celery.schedules import crontab
-djcelery.setup_loader()
 
 # Absolute filesystem path to the Django project directory:
 PROJECT_ROOT = dirname(dirname(dirname(abspath(__file__))))
@@ -55,7 +53,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django_extensions',
     'django_prometheus',
-
+    'rangefilter',
     'taggit',
     'modelcluster',
 
@@ -80,9 +78,7 @@ INSTALLED_APPS = [
     'wagtail.contrib.settings',
     'wagtail.contrib.modeladmin',
     'wagtail.api.v2',
-
     'mptt',
-    'djcelery',
     'el_pagination',
 {% for app_name, _ in cookiecutter.include %}    '{{app_name}}',
 {% endfor %}

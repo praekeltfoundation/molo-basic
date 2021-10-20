@@ -157,6 +157,11 @@ def bannerpages(context, position=-1):
                     'Internet.org' in request.META.get('HTTP_VIA', '') or
                     'InternetOrgApp' in request.META.get(
                         'HTTP_USER_AGENT', '') or
+                    'true' in request.META.get('HTTP_X_IORG_FBS', ''),
+                'is_via_discovery':
+                    'discoverapp' in request.META.get('HTTP_VIA', '') or
+                    'discoverapp' in request.META.get(
+                        'HTTP_USER_AGENT', '') or
                     'true' in request.META.get('HTTP_X_IORG_FBS', '')
             }
         return None
@@ -167,6 +172,10 @@ def bannerpages(context, position=-1):
         'is_via_freebasics':
             'Internet.org' in request.META.get('HTTP_VIA', '') or
             'InternetOrgApp' in request.META.get('HTTP_USER_AGENT', '') or
+            'true' in request.META.get('HTTP_X_IORG_FBS', ''),
+        'is_via_discovery':
+            'discoverapp' in request.META.get('HTTP_VIA', '') or
+            'discoverapp' in request.META.get('HTTP_USER_AGENT', '') or
             'true' in request.META.get('HTTP_X_IORG_FBS', '')
     }
 

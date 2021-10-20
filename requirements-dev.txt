@@ -1,10 +1,10 @@
 -e .
-flake8==3.4.1
-pytest==4.4.0
+flake8
+pytest==6.0.0
 pytest-cov
 pytest-xdist
 pytest-django==3.5.1
 responses
 python-dateutil
 beautifulsoup4
-molo.core~=10.2.8
+molo.core~=11.3.2
