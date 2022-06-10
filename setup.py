@@ -16,7 +16,7 @@ install_requires = [
     'beautifulsoup4==4.6.0',
     'cached-property',
     'celery<4.0',
-    'cookiecutter==1.0.0',
+    'cookiecutter==2.1.1',
     'dj-database-url',
     'Django~=2.2.5',
     'django-cas-ng~=3.6.0',
