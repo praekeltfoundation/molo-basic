@@ -35,7 +35,7 @@ install_requires = [
     'requests',
     'setuptools>=18.5',
     'six>=1.12.0',
-    'ujson==1.35',
+    'ujson==5.4.0',
     'unicodecsv==0.14.1',
     'unicore.content',
     'wagtail~=2.6.2',
