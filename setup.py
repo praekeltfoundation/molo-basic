@@ -28,7 +28,7 @@ install_requires = [
     'djangorestframework==3.10.3',
     'django-phonenumber-field==1.3.0',
     'django-import-export',
-    'django-daterange-filter',
+    'django-admin-rangefilter',
     'markdown>=3.0.1',
     'raven~=6.10.0',
     'redis',
