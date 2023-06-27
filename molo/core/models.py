@@ -9,7 +9,7 @@ from itertools import chain
 from django.utils import timezone as django_timezone
 from django.conf import settings
 from django.db import models
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from django.utils.translation import get_language_from_request
 from django.shortcuts import redirect
 from django.db.models.signals import (pre_save, post_save)
@@ -104,7 +104,7 @@ class ArticleOrderingChoices(enum.Enum):
     PK = 4
     PK_DESC = 5
 
-    labels = {
+    __labels__ = {
         CMS_DEFAULT_SORTING: 'CMS Default Sorting',
         FIRST_PUBLISHED_AT: 'First Published At',
         FIRST_PUBLISHED_AT_DESC: 'First Published At Desc',
@@ -812,7 +812,7 @@ BannerPage.content_panels = [
 ]
 
 # Signal for allowing plugins to create indexes
-index_pages_after_copy = Signal(providing_args=["instance"])
+index_pages_after_copy = Signal()
 
 
 class Main(MoloPage):
